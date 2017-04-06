@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<link rel="SHORTCUT ICON" href="/images/logo/icon.png" />
+<link rel="stylesheet" type="text/css" href="/link.css" />
+
+<!--
+<link type="text/css" rel="stylesheet" href="/css/SyntaxHighlighter.css"/>
+-->
+
+<title>Online Java Compiler | Java Editor - Javatpoint</title>
+
+<meta name="keywords" content="online, java, compiler, editor, free, run"/>
+<meta name="description" content="Online Java compile or java editor tool, free edit compile and run java program, get java output online."/>
+<meta name="viewport" content="width=device-width">						
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="canonical" href="http://www.javatpoint.com/opr/onlinejavacompiler.jsp" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta name="twitter:title" property="og:title" content="Online Java Compiler | Java Editor - Javatpoint" />
+<meta name="twitter:description" property="og:description" content="Online Java compile or java editor tool, free edit compile and run java program, get java output online." />
+<meta property="og:url" content="http://www.javatpoint.com/opr/onlinejavacompiler.jsp" />
+<meta property="og:site_name" content="www.javatpoint.com" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="@pagejavatpoint"/>
+<meta name="twitter:domain" content="www.javatpoint.com"/>
+<meta name="twitter:creator" content="@pagejavatpoint"/>
+
+<script src="googleanalytics.js" type="text/javascript"></script>
+</head>
+<body>
+<div style="margin:0px;float:left">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- compilerheader -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-4699858549023382"
+     data-ad-slot="4515123113"></ins>
+<script>
+    
+    var request;  
+    var filename;
+    
+function sendInfoNew(){
+    var fname;
+    fname=prompt("Enter the name of the file:");
+    
+    if(fname!=null){
+        filename=fname;
+        
+        document.getElementById('code').value="";
+        document.getElementById('code').value=
+                "import java.util.*; "+"\n"+"import java.lang.*; "+"\n"+"import java.io.*; "+"\n\n"+"public class "+filename+"{ "+"\n"+"public static void main(String args[]){ "+"\n} \n}";
+                
+        document.getElementById('code').removeAttribute("disabled");
+        document.getElementById('bt2').removeAttribute("disabled");
+        document.getElementById('bt3').removeAttribute("disabled");
+        document.getElementById('bt4').removeAttribute("disabled");
+        document.getElementById('bt5').removeAttribute("disabled");
+        
+    }
+}
+
+    
+function sendInfo()  
+{  
+sendInfoSave();
+var v=document.vinform.code.value;  
+var url="CompilerServlet?val="+v+"&filename="+filename;  
+
+if(window.XMLHttpRequest){  
+request=new XMLHttpRequest();  
+}  
+else if(window.ActiveXObject){  
+request=new ActiveXObject("Microsoft.XMLHTTP");  
+}  
+  
+try  
+{  
+request.onreadystatechange=getInfo;  
+request.open("POST",url,true);  
+request.send();  
+}  
+catch(e)  
+{  
+alert("Unable to connect to server");  
+}  
+}
+
+function sendInfoRun()  
+{  
+sendInfoSave();
+var v=document.vinform.code.value;  
+var url="RunServlet?val="+v+"&filename="+filename;  
+
+if(window.XMLHttpRequest){  
+request=new XMLHttpRequest();  
+}  
+else if(window.ActiveXObject){  
+request=new ActiveXObject("Microsoft.XMLHTTP");  
+}  
+  
+try  
+{  
+request.onreadystatechange=getInfo;  
+request.open("POST",url,true);  
+request.send();  
+}  
+catch(e)  
+{  
+alert("Unable to connect to server");  
+}  
+}
+  
+function sendInfoSave()  
+{   
+    var v=document.vinform.code.value;   
+    
+    if(filename!=null){
+        var url="SaveServlet?val="+v+"&filename="+filename;
+    
+    if(window.XMLHttpRequest){  
+        request=new XMLHttpRequest();  
+    }  
+    else if(window.ActiveXObject){  
+        request=new ActiveXObject("Microsoft.XMLHTTP");  
+    }
+    
+    try  
+    {  
+        request.open("POST",url,true);  
+        request.send();
+        //alert("File saved successfully!");
+    } 
+    catch(e)  
+    {  
+        alert("Unable to connect to server");  
+    }  
+    }
+}  
+
+function sendInfoOpen()  
+{     
+    var fname=prompt("Enter the name of the file to be opened:");
+    
+    if(fname!=null){
+        
+     document.getElementById('code').removeAttribute("disabled");
+     document.getElementById('bt2').removeAttribute("disabled");
+     document.getElementById('bt3').removeAttribute("disabled");
+     document.getElementById('bt4').removeAttribute("disabled");
+     document.getElementById('bt5').removeAttribute("disabled");
+    
+    filename=fname;
+    var url="OpenServlet?filename="+fname;
+    
+    if(window.XMLHttpRequest){  
+        request=new XMLHttpRequest();  
+    }  
+    else if(window.ActiveXObject){  
+        request=new ActiveXObject("Microsoft.XMLHTTP");  
+    }
+    
+    try  
+    {  
+        request.open("POST",url,true);  
+        request.send();
+        //alert("File saved successfully!");
+    } 
+    catch(e)  
+    {  
+        alert("Unable to connect to server");  
+    }  
+    
+    try  
+    {  
+        request.onreadystatechange=getInfoOpen;  
+        request.open("POST",url,true);  
+        request.send();  
+    }  
+    catch(e)  
+    {  
+        alert("Unable to connect to server");  
+    }  
+    }
+}
+
+function getInfo(){  
+    if(request.readyState==4){  
+        var val=request.responseText;  
+        document.getElementById('output').value=val;  
+    }  
+}  
+ 
+function getInfoOpen(){  
+    if(request.readyState==4){  
+        var val=request.responseText;  
+        //alert(val);
+        //document.getElementById('output').innerHTML=val;
+        document.getElementById('code').value=val;  
+    }  
+}
+</script>
+</div>
+<hr/>
+<h1 class> Online Java Compiler | Java Editor</h1>
+<p>Online java compiler or java editor tool compiles and executes given java code online.</p>
+
+<div style='width:100%'><div style='float:left;width:50%'>
+        <form name='vinform' class='vinform'>
+            <textarea name='code' id='code' class='java' rows='13' style='width:97%;border: 1px solid pink;border-radius:5px;margin:1px;' disabled="disabled"></textarea>
+            <br/>
+            <input type='hidden' name='filename' value='Simple'/>
+<input type='text' name='args' style='width:97%;padding:10px;border: 1px solid pink;border-radius:5px;margin:1px;' placeholder='enter command line arguments if any (optional)'/>
+<br>
+<input type='text' name='classname' style='border-radius:2px;margin:1px;width:97%;padding:10px;border: 1px solid pink;border-radius:5px;margin:1px;' placeholder='enter class name if you change class (optional)'/>
+<br>
+<input type='button' id='bt6' class='subbutton' style='margin-top:4px' value='New' onCLick='sendInfoNew()'>
+<input type='button' id='bt2' class='subbutton' style='margin-top:4px' value='Compile' onCLick='sendInfo()' disabled="disabled">
+<input type='button' id='bt3' class='subbutton' style='margin-top:4px' value='Run' onCLick='sendInfoRun()' disabled="disabled">
+<input type='button' id='bt4' class='subbutton' style='margin-top:4px' value='Save' onCLick='sendInfoSave()' disabled="disabled">
+<input type='button' id='bt5' class='subbutton' style='margin-top:4px' value='Open' onCLick='sendInfoOpen()' >
+        </form></div>
+    <div style='float:left;width:45%;margin-left:30px'>
+    <p style='text-align:center;padding:4px;color:white;background-color:#6666CC'> Output </p>
+    <textarea id='output' name='output' class='java' rows='13' style='width:97%;border: 1px solid pink;border-radius:5px;margin:1px;' disabled="disabled"></textarea>
+    <div style="" id="javacodeoutput"></div>
+</div>
+</div>
+
+
+<div style="clear:both"></div>
+<br/><br/><br/><br/>
+
+<h2 class="h2">Online Java Compiler</h2>
+<p>Write you java code and compile it online. The java compiler or java editor tool helps you to create, compile and run java program. Our aim is to provide you a free online java compiler so you can test you java code anywhere and anytime.</p>
+</body>
+</html>

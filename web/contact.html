@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>contact us</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="simple">CODE<span class="logo_colour">CAMP</span><img src="logo.png" width="50" height="50"></a></h1>
+          <h2>Teaching the world how to code.</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="index.html">Home</a></li>
+          <li><a href="code_editor.html">Practise</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="register.html"><button class="btn btn-primary">Register</button></a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="content_header"></div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h3 style="color:purple "><strong>Announcements</strong></h3>
+        <h4>Upcoming quizzes</h4>
+        <p>Unveiling your star studded gift!
+Go check your profile and know more about the newly launched rating mechanism<br /><a href="#">here</a></p>
+        <p></p>
+        <h4>Recent Blog Posts</h4>
+        <p><a href="#">CampDown 2017 is here and this time its truly open!! </a></p>
+        <h3>RESOURCES</h3>
+        <ul>
+          <li><a href="#">API</a></li>
+          <li><a href="#">Guides</a></li>
+          <li><a href="#">Videos</a></li>
+          <li><a href="#">Events</a></li>
+		  <li><a href="#">News</a></li>
+
+        </ul>
+        <h3>Search</h3>
+        <form method="post" action="#" id="search_form">
+          <p>
+            <input class="search" type="text" name="search_field" value="Enter keywords....." />
+            <input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="style/search.png" alt="Search" title="Search" />
+          </p>
+        </form>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1>Contact Us</h1>
+        <p>Below is our contact form:</p>
+        <form action="" method="post">
+          <div class="form_settings">
+            <p><span>Name</span><input class="contact" type="text" name="your_name" value="" /></p>
+            <p><span>Email Address</span><input class="contact" type="text" name="your_email" value="" /></p>
+            <p><span>Message</span><textarea class="contact textarea" rows="8" cols="50" name="your_enquiry"></textarea></p>
+            <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="contact_submitted" value="submit" /></p>
+          </div>
+        </form>
+        <p><br /><br />NOTE: A contact form such as this would require some way of emailing the input to an email address.</p>
+      </div>
+    </div>
+    <div id="content_footer"></div>
+    <div id="footer">
+      Copyright &copy; 
+    </div>
+  </div>
+</body>
+</html>
